@@ -1,4 +1,4 @@
-package connect
+package gconfig
 
 import (
 	"gateway-service/config"

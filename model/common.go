@@ -1,6 +1,6 @@
 package model
 
-import "gateway-service/client/common"
+import "gateway-service/grpc/client/common"
 
 type ErrorResponse struct {
 	ErrorCode        string            `json:"error_code"`

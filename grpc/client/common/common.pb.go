@@ -195,9 +195,9 @@ type ErrorResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ErrorCode        ErrorCode         `protobuf:"varint,1,opt,name=error_code,json=errorCode,proto3,enum=common.ErrorCode" json:"error_code"`
-	ErrorDescription string            `protobuf:"bytes,2,opt,name=error_description,json=errorDescription,proto3" json:"error_description"`
-	Errors           map[string]string `protobuf:"bytes,3,rep,name=errors,proto3" json:"errors" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	ErrorCode        ErrorCode         `protobuf:"varint,1,opt,name=error_code,json=errorCode,proto3,enum=common.ErrorCode" json:"error_code,omitempty"`
+	ErrorDescription string            `protobuf:"bytes,2,opt,name=error_description,json=errorDescription,proto3" json:"error_description,omitempty"`
+	Errors           map[string]string `protobuf:"bytes,3,rep,name=errors,proto3" json:"errors,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
 func (x *ErrorResponse) Reset() {
@@ -258,8 +258,8 @@ type SuccessResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Message string     `protobuf:"bytes,1,opt,name=message,proto3" json:"message"`
-	Data    *anypb.Any `protobuf:"bytes,2,opt,name=data,proto3" json:"data"`
+	Message string     `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
+	Data    *anypb.Any `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
 }
 
 func (x *SuccessResponse) Reset() {
@@ -393,8 +393,8 @@ type DeleteRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id  string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id"`
-	Ids []string `protobuf:"bytes,2,rep,name=ids,proto3" json:"ids"`
+	Id  string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Ids []string `protobuf:"bytes,2,rep,name=ids,proto3" json:"ids,omitempty"`
 }
 
 func (x *DeleteRequest) Reset() {
@@ -448,10 +448,10 @@ type DeleteResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Success       int32 `protobuf:"varint,1,opt,name=success,proto3" json:"success"`
-	Error         int32 `protobuf:"varint,2,opt,name=error,proto3" json:"error"`
-	Ignore        int32 `protobuf:"varint,3,opt,name=ignore,proto3" json:"ignore"`
-	CannotExecute int32 `protobuf:"varint,4,opt,name=cannot_execute,json=cannotExecute,proto3" json:"cannot_execute"`
+	Success       int32 `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	Error         int32 `protobuf:"varint,2,opt,name=error,proto3" json:"error,omitempty"`
+	Ignore        int32 `protobuf:"varint,3,opt,name=ignore,proto3" json:"ignore,omitempty"`
+	CannotExecute int32 `protobuf:"varint,4,opt,name=cannot_execute,json=cannotExecute,proto3" json:"cannot_execute,omitempty"`
 }
 
 func (x *DeleteResponse) Reset() {
@@ -519,7 +519,7 @@ type BatchDeleteResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Success bool `protobuf:"varint,1,opt,name=success,proto3" json:"success"`
+	Success bool `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 	// Types that are assignable to Response:
 	//	*BatchDeleteResponse_Data_
 	//	*BatchDeleteResponse_Error
@@ -607,13 +607,13 @@ type SpreadsheetResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	FileName       string       `protobuf:"bytes,1,opt,name=file_name,json=fileName,proto3" json:"file_name"`
-	FileSize       int64        `protobuf:"varint,2,opt,name=file_size,json=fileSize,proto3" json:"file_size"`
-	NumRows        int64        `protobuf:"varint,3,opt,name=num_rows,json=numRows,proto3" json:"num_rows"`
-	NumValidRows   int64        `protobuf:"varint,4,opt,name=num_valid_rows,json=numValidRows,proto3" json:"num_valid_rows"`
-	NumInvalidRows int64        `protobuf:"varint,5,opt,name=num_invalid_rows,json=numInvalidRows,proto3" json:"num_invalid_rows"`
-	Data           []*anypb.Any `protobuf:"bytes,6,rep,name=data,proto3" json:"data"`
-	Errors         []string     `protobuf:"bytes,7,rep,name=errors,proto3" json:"errors"`
+	FileName       string       `protobuf:"bytes,1,opt,name=file_name,json=fileName,proto3" json:"file_name,omitempty"`
+	FileSize       int64        `protobuf:"varint,2,opt,name=file_size,json=fileSize,proto3" json:"file_size,omitempty"`
+	NumRows        int64        `protobuf:"varint,3,opt,name=num_rows,json=numRows,proto3" json:"num_rows,omitempty"`
+	NumValidRows   int64        `protobuf:"varint,4,opt,name=num_valid_rows,json=numValidRows,proto3" json:"num_valid_rows,omitempty"`
+	NumInvalidRows int64        `protobuf:"varint,5,opt,name=num_invalid_rows,json=numInvalidRows,proto3" json:"num_invalid_rows,omitempty"`
+	Data           []*anypb.Any `protobuf:"bytes,6,rep,name=data,proto3" json:"data,omitempty"`
+	Errors         []string     `protobuf:"bytes,7,rep,name=errors,proto3" json:"errors,omitempty"`
 }
 
 func (x *SpreadsheetResponse) Reset() {
@@ -702,8 +702,8 @@ type Point struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	XAxis float64 `protobuf:"fixed64,1,opt,name=x_axis,json=xAxis,proto3" json:"x_axis"`
-	YAxis float64 `protobuf:"fixed64,2,opt,name=y_axis,json=yAxis,proto3" json:"y_axis"`
+	XAxis float64 `protobuf:"fixed64,1,opt,name=x_axis,json=xAxis,proto3" json:"x_axis,omitempty"`
+	YAxis float64 `protobuf:"fixed64,2,opt,name=y_axis,json=yAxis,proto3" json:"y_axis,omitempty"`
 }
 
 func (x *Point) Reset() {
@@ -757,9 +757,9 @@ type DraftInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	IsDraft  bool   `protobuf:"varint,1,opt,name=is_draft,json=isDraft,proto3" json:"is_draft"`
-	IsCloned bool   `protobuf:"varint,2,opt,name=is_cloned,json=isCloned,proto3" json:"is_cloned"`
-	RefId    string `protobuf:"bytes,3,opt,name=ref_id,json=refId,proto3" json:"ref_id"`
+	IsDraft  bool   `protobuf:"varint,1,opt,name=is_draft,json=isDraft,proto3" json:"is_draft,omitempty"`
+	IsCloned bool   `protobuf:"varint,2,opt,name=is_cloned,json=isCloned,proto3" json:"is_cloned,omitempty"`
+	RefId    string `protobuf:"bytes,3,opt,name=ref_id,json=refId,proto3" json:"ref_id,omitempty"`
 }
 
 func (x *DraftInfo) Reset() {
@@ -900,7 +900,7 @@ type BooleanSuccessResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Result bool `protobuf:"varint,1,opt,name=result,proto3" json:"result"`
+	Result bool `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
 }
 
 func (x *BooleanSuccessResponse) Reset() {
@@ -947,10 +947,10 @@ type Error struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Code      ErrorCode         `protobuf:"varint,1,opt,name=code,proto3,enum=common.ErrorCode" json:"code"`
-	Message   string            `protobuf:"bytes,2,opt,name=message,proto3" json:"message"`
-	Exception string            `protobuf:"bytes,3,opt,name=exception,proto3" json:"exception"`
-	Details   map[string]string `protobuf:"bytes,4,rep,name=details,proto3" json:"details" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Code      ErrorCode         `protobuf:"varint,1,opt,name=code,proto3,enum=common.ErrorCode" json:"code,omitempty"`
+	Message   string            `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+	Exception string            `protobuf:"bytes,3,opt,name=exception,proto3" json:"exception,omitempty"`
+	Details   map[string]string `protobuf:"bytes,4,rep,name=details,proto3" json:"details,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
 func (x *Error) Reset() {
@@ -1018,8 +1018,8 @@ type NoContentResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Success bool   `protobuf:"varint,1,opt,name=success,proto3" json:"success"`
-	Error   *Error `protobuf:"bytes,2,opt,name=error,proto3" json:"error"`
+	Success bool   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	Error   *Error `protobuf:"bytes,2,opt,name=error,proto3" json:"error,omitempty"`
 }
 
 func (x *NoContentResponse) Reset() {
@@ -1073,7 +1073,7 @@ type OnlyIdResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Success bool `protobuf:"varint,1,opt,name=success,proto3" json:"success"`
+	Success bool `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 	// Types that are assignable to Response:
 	//	*OnlyIdResponse_Data_
 	//	*OnlyIdResponse_Error
@@ -1161,7 +1161,7 @@ type OnlyCodeResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Success bool `protobuf:"varint,1,opt,name=success,proto3" json:"success"`
+	Success bool `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 	// Types that are assignable to Response:
 	//	*OnlyCodeResponse_Data_
 	//	*OnlyCodeResponse_Error
@@ -1249,7 +1249,7 @@ type FindByIdRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id"`
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 }
 
 func (x *FindByIdRequest) Reset() {
@@ -1296,7 +1296,7 @@ type FindByIdsRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Ids []string `protobuf:"bytes,1,rep,name=ids,proto3" json:"ids"`
+	Ids []string `protobuf:"bytes,1,rep,name=ids,proto3" json:"ids,omitempty"`
 }
 
 func (x *FindByIdsRequest) Reset() {
@@ -1343,7 +1343,7 @@ type FindByCodeRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Code string `protobuf:"bytes,1,opt,name=code,proto3" json:"code"`
+	Code string `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"`
 }
 
 func (x *FindByCodeRequest) Reset() {
@@ -1390,7 +1390,7 @@ type FindByCodesRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Codes []string `protobuf:"bytes,2,rep,name=codes,proto3" json:"codes"`
+	Codes []string `protobuf:"bytes,2,rep,name=codes,proto3" json:"codes,omitempty"`
 }
 
 func (x *FindByCodesRequest) Reset() {
@@ -1437,10 +1437,10 @@ type PageRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Page      int32  `protobuf:"varint,1,opt,name=page,proto3" json:"page"`
-	Size      int32  `protobuf:"varint,2,opt,name=size,proto3" json:"size"`
-	Sort      string `protobuf:"bytes,3,opt,name=sort,proto3" json:"sort"`
-	Direction string `protobuf:"bytes,4,opt,name=direction,proto3" json:"direction"`
+	Page      int32  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`
+	Size      int32  `protobuf:"varint,2,opt,name=size,proto3" json:"size,omitempty"`
+	Sort      string `protobuf:"bytes,3,opt,name=sort,proto3" json:"sort,omitempty"`
+	Direction string `protobuf:"bytes,4,opt,name=direction,proto3" json:"direction,omitempty"`
 }
 
 func (x *PageRequest) Reset() {
@@ -1508,7 +1508,7 @@ type PageResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Success bool `protobuf:"varint,1,opt,name=success,proto3" json:"success"`
+	Success bool `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 	// Types that are assignable to Response:
 	//	*PageResponse_Data_
 	//	*PageResponse_Error
@@ -1596,7 +1596,7 @@ type ListResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Success bool `protobuf:"varint,1,opt,name=success,proto3" json:"success"`
+	Success bool `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 	// Types that are assignable to Response:
 	//	*ListResponse_Data_
 	//	*ListResponse_Error
@@ -1684,7 +1684,7 @@ type GetResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Success bool `protobuf:"varint,1,opt,name=success,proto3" json:"success"`
+	Success bool `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 	// Types that are assignable to Response:
 	//	*GetResponse_Data_
 	//	*GetResponse_Error
@@ -1772,9 +1772,9 @@ type Numeric2TextMetadata struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Index        int32  `protobuf:"varint,1,opt,name=index,proto3" json:"index"`
-	HumanText    string `protobuf:"bytes,2,opt,name=human_text,json=humanText,proto3" json:"human_text"`          // readable text
-	FilipinoText string `protobuf:"bytes,3,opt,name=filipino_text,json=filipinoText,proto3" json:"filipino_text"` // text translated to Filipino
+	Index        int32  `protobuf:"varint,1,opt,name=index,proto3" json:"index,omitempty"`
+	HumanText    string `protobuf:"bytes,2,opt,name=human_text,json=humanText,proto3" json:"human_text,omitempty"`          // readable text
+	FilipinoText string `protobuf:"bytes,3,opt,name=filipino_text,json=filipinoText,proto3" json:"filipino_text,omitempty"` // text translated to Filipino
 }
 
 func (x *Numeric2TextMetadata) Reset() {
@@ -1835,10 +1835,10 @@ type UploadFileRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Content   []byte `protobuf:"bytes,1,opt,name=content,proto3" json:"content"`
-	Name      string `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
-	Extension string `protobuf:"bytes,3,opt,name=extension,proto3" json:"extension"`
-	Size      int64  `protobuf:"varint,4,opt,name=size,proto3" json:"size"`
+	Content   []byte `protobuf:"bytes,1,opt,name=content,proto3" json:"content,omitempty"`
+	Name      string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Extension string `protobuf:"bytes,3,opt,name=extension,proto3" json:"extension,omitempty"`
+	Size      int64  `protobuf:"varint,4,opt,name=size,proto3" json:"size,omitempty"`
 }
 
 func (x *UploadFileRequest) Reset() {
@@ -1906,7 +1906,7 @@ type UploadFileResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Success bool `protobuf:"varint,1,opt,name=success,proto3" json:"success"`
+	Success bool `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 	// Types that are assignable to Response:
 	//	*UploadFileResponse_Data_
 	//	*UploadFileResponse_Error
@@ -1994,9 +1994,9 @@ type ChangelogIssuer struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ExternalId string `protobuf:"bytes,1,opt,name=external_id,json=externalId,proto3" json:"external_id"`
-	FirstName  string `protobuf:"bytes,2,opt,name=first_name,json=firstName,proto3" json:"first_name"`
-	LastName   string `protobuf:"bytes,3,opt,name=last_name,json=lastName,proto3" json:"last_name"`
+	ExternalId string `protobuf:"bytes,1,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
+	FirstName  string `protobuf:"bytes,2,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
+	LastName   string `protobuf:"bytes,3,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
 }
 
 func (x *ChangelogIssuer) Reset() {
@@ -2057,10 +2057,10 @@ type Changelog struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ChangelogId string                 `protobuf:"bytes,1,opt,name=changelog_id,json=changelogId,proto3" json:"changelog_id"`
-	Issuer      *ChangelogIssuer       `protobuf:"bytes,2,opt,name=issuer,proto3" json:"issuer"`
-	IssuedAt    *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=issued_at,json=issuedAt,proto3" json:"issued_at"`
-	Op          string                 `protobuf:"bytes,4,opt,name=op,proto3" json:"op"`
+	ChangelogId string                 `protobuf:"bytes,1,opt,name=changelog_id,json=changelogId,proto3" json:"changelog_id,omitempty"`
+	Issuer      *ChangelogIssuer       `protobuf:"bytes,2,opt,name=issuer,proto3" json:"issuer,omitempty"`
+	IssuedAt    *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=issued_at,json=issuedAt,proto3" json:"issued_at,omitempty"`
+	Op          string                 `protobuf:"bytes,4,opt,name=op,proto3" json:"op,omitempty"`
 }
 
 func (x *Changelog) Reset() {
@@ -2128,9 +2128,9 @@ type CheckResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Success bool   `protobuf:"varint,1,opt,name=success,proto3" json:"success"`
-	Result  bool   `protobuf:"varint,2,opt,name=result,proto3" json:"result"`
-	Error   *Error `protobuf:"bytes,3,opt,name=error,proto3" json:"error"`
+	Success bool   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	Result  bool   `protobuf:"varint,2,opt,name=result,proto3" json:"result,omitempty"`
+	Error   *Error `protobuf:"bytes,3,opt,name=error,proto3" json:"error,omitempty"`
 }
 
 func (x *CheckResponse) Reset() {
@@ -2191,9 +2191,9 @@ type BatchCheckResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Success bool            `protobuf:"varint,1,opt,name=success,proto3" json:"success"`
-	Result  map[string]bool `protobuf:"bytes,2,rep,name=result,proto3" json:"result" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3"`
-	Error   *Error          `protobuf:"bytes,3,opt,name=error,proto3" json:"error"`
+	Success bool            `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	Result  map[string]bool `protobuf:"bytes,2,rep,name=result,proto3" json:"result,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3"`
+	Error   *Error          `protobuf:"bytes,3,opt,name=error,proto3" json:"error,omitempty"`
 }
 
 func (x *BatchCheckResponse) Reset() {
@@ -2254,7 +2254,7 @@ type FindByKeyword struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	SearchTerm string `protobuf:"bytes,1,opt,name=search_term,json=searchTerm,proto3" json:"search_term"`
+	SearchTerm string `protobuf:"bytes,1,opt,name=search_term,json=searchTerm,proto3" json:"search_term,omitempty"`
 }
 
 func (x *FindByKeyword) Reset() {
@@ -2301,10 +2301,10 @@ type BatchDeleteResponse_Data struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	NumSuccess       int32 `protobuf:"varint,1,opt,name=num_success,json=numSuccess,proto3" json:"num_success"`
-	NumError         int32 `protobuf:"varint,2,opt,name=num_error,json=numError,proto3" json:"num_error"`
-	NumIgnore        int32 `protobuf:"varint,3,opt,name=num_ignore,json=numIgnore,proto3" json:"num_ignore"`
-	NumCannotExecute int32 `protobuf:"varint,4,opt,name=num_cannot_execute,json=numCannotExecute,proto3" json:"num_cannot_execute"`
+	NumSuccess       int32 `protobuf:"varint,1,opt,name=num_success,json=numSuccess,proto3" json:"num_success,omitempty"`
+	NumError         int32 `protobuf:"varint,2,opt,name=num_error,json=numError,proto3" json:"num_error,omitempty"`
+	NumIgnore        int32 `protobuf:"varint,3,opt,name=num_ignore,json=numIgnore,proto3" json:"num_ignore,omitempty"`
+	NumCannotExecute int32 `protobuf:"varint,4,opt,name=num_cannot_execute,json=numCannotExecute,proto3" json:"num_cannot_execute,omitempty"`
 }
 
 func (x *BatchDeleteResponse_Data) Reset() {
@@ -2372,7 +2372,7 @@ type OnlyIdResponse_Data struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id"`
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 }
 
 func (x *OnlyIdResponse_Data) Reset() {
@@ -2419,7 +2419,7 @@ type OnlyCodeResponse_Data struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Code string `protobuf:"bytes,1,opt,name=code,proto3" json:"code"`
+	Code string `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"`
 }
 
 func (x *OnlyCodeResponse_Data) Reset() {
@@ -2466,11 +2466,11 @@ type PageResponse_Data struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Page          int32        `protobuf:"varint,1,opt,name=page,proto3" json:"page"`
-	Size          int32        `protobuf:"varint,2,opt,name=size,proto3" json:"size"`
-	TotalElements int64        `protobuf:"varint,3,opt,name=total_elements,json=totalElements,proto3" json:"total_elements"`
-	TotalPages    int32        `protobuf:"varint,4,opt,name=total_pages,json=totalPages,proto3" json:"total_pages"`
-	Items         []*anypb.Any `protobuf:"bytes,5,rep,name=items,proto3" json:"items"`
+	Page          int32        `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`
+	Size          int32        `protobuf:"varint,2,opt,name=size,proto3" json:"size,omitempty"`
+	TotalElements int64        `protobuf:"varint,3,opt,name=total_elements,json=totalElements,proto3" json:"total_elements,omitempty"`
+	TotalPages    int32        `protobuf:"varint,4,opt,name=total_pages,json=totalPages,proto3" json:"total_pages,omitempty"`
+	Items         []*anypb.Any `protobuf:"bytes,5,rep,name=items,proto3" json:"items,omitempty"`
 }
 
 func (x *PageResponse_Data) Reset() {
@@ -2545,8 +2545,8 @@ type ListResponse_Data struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TotalElements int64        `protobuf:"varint,1,opt,name=total_elements,json=totalElements,proto3" json:"total_elements"`
-	Items         []*anypb.Any `protobuf:"bytes,2,rep,name=items,proto3" json:"items"`
+	TotalElements int64        `protobuf:"varint,1,opt,name=total_elements,json=totalElements,proto3" json:"total_elements,omitempty"`
+	Items         []*anypb.Any `protobuf:"bytes,2,rep,name=items,proto3" json:"items,omitempty"`
 }
 
 func (x *ListResponse_Data) Reset() {
@@ -2600,7 +2600,7 @@ type GetResponse_Data struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Item *anypb.Any `protobuf:"bytes,1,opt,name=item,proto3" json:"item"`
+	Item *anypb.Any `protobuf:"bytes,1,opt,name=item,proto3" json:"item,omitempty"`
 }
 
 func (x *GetResponse_Data) Reset() {
@@ -2647,9 +2647,9 @@ type UploadFileResponse_Data struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Content          string `protobuf:"bytes,1,opt,name=content,proto3" json:"content"`
-	OriginalFilename string `protobuf:"bytes,2,opt,name=original_filename,json=originalFilename,proto3" json:"original_filename"`
-	PreSignedUrl     string `protobuf:"bytes,3,opt,name=pre_signed_url,json=preSignedUrl,proto3" json:"pre_signed_url"`
+	Content          string `protobuf:"bytes,1,opt,name=content,proto3" json:"content,omitempty"`
+	OriginalFilename string `protobuf:"bytes,2,opt,name=original_filename,json=originalFilename,proto3" json:"original_filename,omitempty"`
+	PreSignedUrl     string `protobuf:"bytes,3,opt,name=pre_signed_url,json=preSignedUrl,proto3" json:"pre_signed_url,omitempty"`
 }
 
 func (x *UploadFileResponse_Data) Reset() {
@@ -3015,11 +3015,11 @@ var file_common_common_proto_rawDesc = []byte{
 	0x4f, 0x52, 0x5f, 0x52, 0x45, 0x4d, 0x49, 0x4e, 0x44, 0x45, 0x52, 0x10, 0x00, 0x12, 0x20, 0x0a,
 	0x1c, 0x54, 0x41, 0x53, 0x4b, 0x5f, 0x4d, 0x41, 0x52, 0x4b, 0x45, 0x54, 0x5f, 0x4f, 0x50, 0x45,
 	0x52, 0x41, 0x54, 0x4f, 0x52, 0x5f, 0x45, 0x58, 0x50, 0x49, 0x52, 0x45, 0x44, 0x10, 0x01, 0x42,
-	0x3e, 0x0a, 0x1b, 0x63, 0x6f, 0x6d, 0x2e, 0x62, 0x61, 0x6e, 0x76, 0x69, 0x65, 0x6e, 0x2e, 0x74,
+	0x43, 0x0a, 0x1b, 0x63, 0x6f, 0x6d, 0x2e, 0x62, 0x61, 0x6e, 0x76, 0x69, 0x65, 0x6e, 0x2e, 0x74,
 	0x72, 0x61, 0x69, 0x6e, 0x69, 0x6e, 0x67, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x50, 0x01,
-	0x5a, 0x1d, 0x67, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x2d, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63,
-	0x65, 0x2f, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2f, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x62,
-	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x5a, 0x22, 0x67, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x2d, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63,
+	0x65, 0x2f, 0x67, 0x72, 0x70, 0x63, 0x2f, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2f, 0x63, 0x6f,
+	0x6d, 0x6d, 0x6f, 0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (

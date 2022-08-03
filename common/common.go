@@ -1,7 +1,7 @@
 package common
 
 import (
-	grpc "gateway-service/client/common"
+	grpc "gateway-service/grpc/client/common"
 	"gateway-service/model"
 	"github.com/gin-gonic/gin"
 	"net/http"

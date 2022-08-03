@@ -1,4 +1,4 @@
-package lib
+package gconfig
 
 import (
 	"google.golang.org/grpc"

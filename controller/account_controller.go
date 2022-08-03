@@ -1,9 +1,9 @@
 package controller
 
 import (
-	"gateway-service/client"
-	"gateway-service/client/account"
 	"gateway-service/common"
+	"gateway-service/grpc/client"
+	"gateway-service/grpc/client/account"
 	"gateway-service/model"
 	"github.com/gin-gonic/gin"
 	"log"
@@ -15,14 +15,10 @@ type AccountController struct {
 	accountClient *client.AccountClient
 }
 
-func InitAccountController(g *gin.Engine, accountClient *client.AccountClient) {
-
-	controller := &AccountController{
+func NewAccountController(accountClient *client.AccountClient) *AccountController {
+	return &AccountController{
 		accountClient: accountClient,
 	}
-	routerGroup := g.Group("/users")
-	routerGroup.GET("/:id", controller.GetUser)
-
 }
 
 func (controller *AccountController) GetUser(ctx *gin.Context) {

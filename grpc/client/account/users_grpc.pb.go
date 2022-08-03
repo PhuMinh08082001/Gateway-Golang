@@ -8,7 +8,7 @@ package account
 
 import (
 	context "context"
-	common "gateway-service/client/common"
+	common "gateway-service/grpc/client/common"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"

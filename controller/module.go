@@ -2,6 +2,6 @@ package controller
 
 import "go.uber.org/fx"
 
-var Module = fx.Invoke(
-	InitAccountController,
+var Module = fx.Provide(
+	NewAccountController,
 )

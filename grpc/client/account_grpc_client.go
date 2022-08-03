@@ -2,10 +2,10 @@ package client
 
 import (
 	"context"
-	"gateway-service/client/account"
-	"gateway-service/client/common"
-	"gateway-service/client/connect"
 	"gateway-service/common/constants"
+	"gateway-service/grpc/client/account"
+	"gateway-service/grpc/client/common"
+	gconfig "gateway-service/grpc/config"
 	"google.golang.org/grpc/metadata"
 	"time"
 )
@@ -14,7 +14,7 @@ type AccountClient struct {
 	accountClient account.UserServiceClient
 }
 
-func NewAccountClient(accountConn *connect.AccountConn) *AccountClient {
+func NewAccountClient(accountConn *gconfig.AccountConn) *AccountClient {
 	return &AccountClient{
 		accountClient: account.NewUserServiceClient(accountConn.Cc),
 	}

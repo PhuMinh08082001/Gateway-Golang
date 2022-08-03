@@ -2,7 +2,6 @@ package server
 
 import (
 	"context"
-	_ "fmt"
 	"gateway-service/config"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/fx"

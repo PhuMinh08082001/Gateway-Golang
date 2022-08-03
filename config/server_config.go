@@ -1,4 +1,4 @@
-package lib
+package config
 
 import (
 	"github.com/gin-contrib/cors"
